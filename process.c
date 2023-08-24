@@ -18,6 +18,10 @@ void process_command(stack_t **stack, char *opcode,
 		{"nop", nop},
 		{"add", add},
 		{"sub", sub},
+		{"div", _div},
+		{"mod", _mod},
+		{"mul", _mul},
+		{"#", comment},
 		{NULL, NULL}
 	};
 
@@ -27,7 +31,6 @@ void process_command(stack_t **stack, char *opcode,
 		{
 			instructions[i].f(stack, line_number);
 					/*valid instruction found*/
-			flag = 1;
 			return;
 			/*break;*/
 		}
