@@ -23,10 +23,7 @@ int main(int argc, char *argv[])
 	stack_t *stack = NULL;
 
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
+		fprintf(stderr, "USAGE: monty file\n"), exit(EXIT_FAILURE);
 	file_name = argv[1];
 	if (access(file_name, F_OK) == -1)
 	{
@@ -41,8 +38,7 @@ int main(int argc, char *argv[])
 	}
 	while (flag == 1 && (nread = getline(&line, &line_size, file)) != -1)
 	{
-		line_number++;
-		opcode = strtok(line, delim);
+		line_number++, opcode = strtok(line, delim);
 		if (opcode == NULL)
 			continue;
 		if (strcmp(opcode, "push") == 0)
@@ -51,25 +47,15 @@ int main(int argc, char *argv[])
 			if (arg_str == NULL || !is_valid_number(arg_str))
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line_number);
-				free(line);
-				fclose(file);
-				free_stack(stack);
+				free(line), fclose(file), free_stack(stack);
 				exit(EXIT_FAILURE);
 			}
 			push_argument = atoi(arg_str);
 			push_op(&stack, line_number, push_argument);
 			continue;
 		}
-		else
-		{
-			process_command(&stack, opcode, line_number);
-			continue;
-		}
+		process_command(&stack, opcode, line_number);
 	}
-	fclose(file);
-	free(line);
-	free_stack(stack);
-	if (flag == 2)
-		exit(EXIT_FAILURE);
-	return (0);
+	fclose(file), free(line), free_stack(stack);
+	(flag == 2) ? exit(EXIT_FAILURE) : exit(EXIT_SUCCESS);
 }
