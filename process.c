@@ -32,7 +32,7 @@ void process_command(stack_t **stack, char *opcode,
 		}
 		if (instructions[i].opcode == NULL)
 		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 			*flag = 0;/*for unknown instruction*/
 		}
 	}

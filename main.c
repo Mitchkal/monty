@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 			arg_str = strtok(NULL, delim);
 			if (arg_str == NULL)
 			{
-				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				free(line);
 				fclose(file);
 				free_stack(stack);
