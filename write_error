@@ -1,0 +1,10 @@
+#include "monty.h"
+/**
+ * print_error - writtes error to stderr
+ * @message: the message
+ */
+
+void print_error(char *message)
+{
+	fprintf(stderr, message);
+}
