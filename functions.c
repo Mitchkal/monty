@@ -68,3 +68,21 @@ void free_stack(stack_t *stack)
 		free(temp);
 	}
 }
+/**
+ * is_valid_number - checks for valid numbers
+ * @str: the string to check
+ * Return: 0 or 1
+ */
+int is_valid_number(const char *str)
+{
+	size_t i = 0;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (!isdigit(str[i]) && str[i] != '-' && str[1] != '+')
+		{
+			return (0);
+		}
+	}
+	return (1);
+}

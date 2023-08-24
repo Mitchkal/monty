@@ -3,11 +3,10 @@
  * process_command - processes the command
  * @opcode: the read opcode instruction
  * @line_number: the line number
- * @flag: the exit flag
  * @stack: the stack
  */
 void process_command(stack_t **stack, char *opcode,
-		unsigned int line_number, int *flag)
+		unsigned int line_number)
 {
 	int i = 0;
 	/*char opcode[256];*/
@@ -27,13 +26,12 @@ void process_command(stack_t **stack, char *opcode,
 		{
 			instructions[i].f(stack, line_number);
 					/*valid instruction found*/
-			*flag = 1;
+			flag = 1;
+			return;
 			/*break;*/
 		}
-		if (instructions[i].opcode == NULL)
-		{
-			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
-			*flag = 0;/*for unknown instruction*/
-		}
 	}
+
+	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+	flag = 2;/*for unknown instruction*/
 }

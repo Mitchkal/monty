@@ -43,7 +43,7 @@ typedef struct instruction_s
 extern stack_t *stack;
 extern int flag;
 void free_stack(stack_t *stack);
-void process_command(stack_t **stack, char *opcode, unsigned int line_number, int *flag);
+void process_command(stack_t **stack, char *opcode, unsigned int line_number);
 void push_op(stack_t **stack, unsigned int line_number, int push_argument);
 void pop(stack_t **stack, unsigned int line_number);
 void print_operation(stack_t **stack, unsigned int line_number); 
@@ -52,4 +52,5 @@ void _pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+int is_valid_number(const char *str);
 #endif

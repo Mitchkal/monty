@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 		if (strcmp(opcode, "push") == 0)
 		{
 			arg_str = strtok(NULL, delim);
-			if (arg_str == NULL)
+			if (arg_str == NULL || !is_valid_number(arg_str))
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", line_number);
 				free(line);
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 		}
 		else
 		{
-			process_command(&stack, opcode, line_number, &flag);
+			process_command(&stack, opcode, line_number);
 			continue;
 		}
 	}
