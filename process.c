@@ -17,6 +17,7 @@ void process_command(stack_t **stack, char *opcode,
 		{"swap", swap},
 		{"nop", nop},
 		{"add", add},
+		{"sub", sub},
 		{NULL, NULL}
 	};
 
